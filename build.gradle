@@ -2,12 +2,15 @@ group 'com.romainpiel.svgtoandroid'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'groovy'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    compile gradleApi()
+    compile localGroovy()
     compile 'com.android.tools:common:24.3.1'
     testCompile 'junit:junit:4.12'
     testCompile 'com.android.tools:testutils:24.3.1'
