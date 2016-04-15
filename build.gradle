@@ -9,4 +9,6 @@ repositories {
 
 dependencies {
     compile 'com.android.tools:common:24.3.1'
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.android.tools:testutils:24.3.1'
 }
