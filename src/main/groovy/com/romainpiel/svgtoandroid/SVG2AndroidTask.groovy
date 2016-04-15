@@ -37,10 +37,19 @@ class SVG2AndroidTask extends DefaultTask {
             svgFiles.add change.file
         }
 
+        File resDir = getResourceDir()
+        resDir.mkdirs()
+
         svgFiles.each { File svgFile ->
-            File destination = new File(getResourceDir(), getDestinationFile(svgFile.name))
+            File destination = new File(resDir, getDestinationFile(svgFile.name))
             OutputStream outStream = new FileOutputStream(destination)
-            Svg2Vector.parseSvgToXml(svgFile, outStream)
+            String error = Svg2Vector.parseSvgToXml(svgFile, outStream)
+            if (!error.isEmpty()) {
+                logger.error(error)
+            }
+
+            outStream.flush()
+            outStream.close()
 
             logger.info("Converted $svgFile to $destination")
         }
@@ -48,7 +57,6 @@ class SVG2AndroidTask extends DefaultTask {
         inputs.removed { change ->
             logger.debug("$change.file.name was removed; removing it from generated folder")
 
-            File resDir = getResourceDir()
             File file = new File(resDir, getDestinationFile(change.file.name))
             file.delete()
         }
@@ -60,6 +68,6 @@ class SVG2AndroidTask extends DefaultTask {
 
     String getDestinationFile(String name) {
         int suffixStart = name.lastIndexOf '.'
-        return suffixStart == -1 ? name : "${name.substring(0, suffixStart)}.png"
+        return suffixStart == -1 ? name : "${name.substring(0, suffixStart)}.xml"
     }
 }
