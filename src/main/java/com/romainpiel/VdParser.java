@@ -384,6 +384,8 @@ class VdParser {
                 vdTree.mPortWidth = Float.parseFloat(value);
             } else if ("android:viewportHeight".equals(name)) {
                 vdTree.mPortHeight = Float.parseFloat(value);
+            } else if ("android:alpha".equals(name)) {
+                vdTree.mRootAlpha = Float.parseFloat(value);
             } else {
                 continue;
             }

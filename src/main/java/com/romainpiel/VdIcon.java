@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2015 The Android Open Source Project
  *
@@ -15,11 +16,19 @@
  */
 package com.romainpiel;
 
-import javax.swing.*;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 
+import javax.swing.Icon;
+
+/**
+ * VdIcon wrap every vector drawable from Material Library into an icon.
+ * All of them are shown in a table for developer to pick.
+ */
 public class VdIcon implements Icon, Comparable<VdIcon> {
     private VdTree mVdTree;
     private final String mName;
@@ -51,8 +60,13 @@ public class VdIcon implements Icon, Comparable<VdIcon> {
 
     @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
-        // We will always fill the whole component.
-        mVdTree.draw(g, c.getWidth(), c.getHeight());
+        // We knew all the icons from Material library are square shape.
+        int minSize = Math.min(c.getWidth(), c.getHeight());
+        final BufferedImage image = AssetUtil.newArgbBufferedImage(minSize, minSize);
+        mVdTree.drawIntoImage(image);
+        // Draw in the center of the component.
+        Rectangle rect = new Rectangle(0, 0, c.getWidth(), c.getHeight());
+        AssetUtil.drawCenterInside((Graphics2D) g, image, rect);
     }
 
     @Override
