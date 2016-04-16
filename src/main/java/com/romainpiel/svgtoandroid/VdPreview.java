@@ -32,8 +32,7 @@ import java.io.*;
 
 /**
  * Generate a Image based on the VectorDrawable's XML content.
- * <p/>
- * <p>This class also contains a main method, which can be used to preview a vector drawable file.
+ * This class also contains a main method, which can be used to preview a vector drawable file.
  */
 public class VdPreview {
     private static final String ANDROID_ALPHA = "android:alpha";
@@ -47,7 +46,7 @@ public class VdPreview {
      * This encapsulates the information used to determine the preview image size.
      * The reason we have different ways here is that both Studio UI and build process need
      * to use this common code path to generate images for vectordrawable.
-     * When {@value mUseWidth} is true, use {@code mImageMaxDimension} as the maximum
+     * When mUseWidth is true, use {@code mImageMaxDimension} as the maximum
      * dimension value while keeping the aspect ratio.
      * Otherwise, use {@code mImageScale} to scale the image based on the XML's size information.
      */
@@ -128,7 +127,6 @@ public class VdPreview {
      * @param document the parsed document of original VectorDrawable's XML file.
      * @param info     incoming override information for VectorDrawable.
      * @param errorLog log for the parsing errors and warnings.
-     * @param srcSize  as an output, store the original size of the VectorDrawable
      * @return the overridden XML file in one string. If exception happens
      * or no attributes needs to be overriden, return null.
      */
@@ -216,7 +214,7 @@ public class VdPreview {
 
     /**
      * This generates an image according to the VectorDrawable's content {@code xmlFileContent}.
-     * At the same time, {@vdErrorLog} captures all the errors found during parsing.
+     * At the same time, vdErrorLog captures all the errors found during parsing.
      * The size of image is determined by the {@code size}.
      *
      * @param targetSize     the size of result image.
