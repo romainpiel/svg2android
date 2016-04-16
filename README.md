@@ -2,7 +2,7 @@
 
 An Android build tools library to convert SVGs to Android vector drawables
 
-[source](https://android.googlesource.com/platform/tools/base/+/master/sdk-common/src/main/java/com/android/ide/common/vectordrawable).
+Source: [Android Studio build tools](https://android.googlesource.com/platform/tools/base/+/master/sdk-common/src/main/java/com/android/ide/common/vectordrawable).
 
 ## Motivations
 see https://github.com/trello/victor/pull/43
