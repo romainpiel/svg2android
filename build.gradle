@@ -1,12 +1,29 @@
 apply plugin: 'java'
-apply from: 'gradle-mvn-push.gradle'
+apply plugin: 'bintray-release'
+
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.3.4'
+    }
+}
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
     compile 'com.android.tools:common:24.3.1'
     testCompile 'junit:junit:4.12'
     testCompile 'com.android.tools:testutils:24.3.1'
+}
+
+publish {
+    userOrg = 'romainpiel'
+    groupId = 'com.romainpiel'
+    artifactId = 'svgtoandroid'
+    version = '0.1.0-SNAPSHOT'
+    description = 'An SVG-to-Android vector drawables converter'
+    website = 'https://github.com/RomainPiel/svg2android'
+    uploadName = 'SVG2Android'
 }
