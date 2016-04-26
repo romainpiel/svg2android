@@ -17,8 +17,6 @@ package com.romainpiel.svgtoandroid;
 
 import com.android.testutils.TestUtils;
 
-import junit.framework.TestCase;
-
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -46,10 +44,9 @@ public class VectorDrawbleGeneratorTest extends GeneratorTest {
         File parentDirFile = TestUtils.getRoot("vectordrawable");
         File svgFile = new File(parentDirFile, svgName);
         OutputStream outStream = new ByteArrayOutputStream();
-        try {
-            Svg2Vector.parseSvgToXml(svgFile, outStream);
-        } catch (Exception e) {
-            TestCase.assertTrue("Failure: Exception in Svg2Vector.parseSvgToXml!", false);
+        String error = Svg2Vector.parseSvgToXml(svgFile, outStream);
+        if (!error.isEmpty()) {
+            throw new IllegalStateException(error);
         }
         final VdPreview.TargetSize imageTargetSize = VdPreview.TargetSize.createSizeFromWidth(24);
         StringBuilder builder = new StringBuilder();
