@@ -1,5 +1,7 @@
 # SVG2Android
 
+[![Build Status](https://travis-ci.org/RomainPiel/svg2android.svg?branch=master)](https://travis-ci.org/RomainPiel/svg2android)
+
 An Android build tools library that converts SVGs to Android vector drawables
 
 Source: [Android Studio build tools](https://android.googlesource.com/platform/tools/base/+/master/sdk-common/src/main/java/com/android/ide/common/vectordrawable).
