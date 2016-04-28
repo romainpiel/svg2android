@@ -13,7 +13,14 @@ see https://github.com/trello/victor/pull/43 for more details
 ## Usage
 
 ```gradle
-compile 'com.romainpiel.svgtoandroid:svgtoandroid:0.1.0'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.romainpiel.svgtoandroid:svgtoandroid:0.1.0'
+}
 ```
 
 ```java
